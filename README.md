@@ -1,4 +1,4 @@
-# 🏢 PayrollPro — Employee Payroll Management System
+# 🏢 Carelink Ai Payroll — Employee Payroll Management System
 
 A full-stack Java Spring Boot application with cloud PostgreSQL database, modern animated UI, PDF payslip generation with email delivery, admin authentication, and session management.
 
