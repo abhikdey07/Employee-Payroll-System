@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Salary Slip</title>
+</head>
+<body style="margin: 0; padding: 20px; font-family: Arial, Helvetica, sans-serif; background-color: #f3f4f6; color: #333333;">
+    <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+        
+        <!-- Header -->
+        <div style="background: linear-gradient(135deg, #3b82f6, #8b5cf6); padding: 30px 20px; text-align: center; color: #ffffff;">
+            <h1 style="margin: 0; font-size: 28px; font-weight: bold;" th:text="${companyName}">PayrollPro</h1>
+            <p style="margin: 5px 0 0; font-size: 18px; opacity: 0.9;">Salary Slip</p>
+            <p style="margin: 5px 0 0; font-size: 16px; font-weight: bold;" th:text="${month} + ' ' + ${year}">Month Year</p>
+        </div>
+        
+        <!-- Body -->
+        <div style="padding: 30px;">
+            <p style="font-size: 16px; margin-bottom: 20px;">Dear <strong th:text="${employeeName}">[Employee Name]</strong>,</p>
+            <p style="font-size: 14px; margin-bottom: 30px; color: #4b5563;">Please find your salary details for <span th:text="${month} + ' ' + ${year}">[Month] [Year]</span> below.</p>
+            
+            <!-- Employee Info Card -->
+            <div style="background-color: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px; padding: 15px; margin-bottom: 30px;">
+                <p style="margin: 0 0 10px; font-size: 14px;"><strong>Employee Code:</strong> <span th:text="${empCode}">EMP000</span></p>
+                <p style="margin: 0; font-size: 14px;"><strong>Generated On:</strong> <span th:text="${generatedDate}">DD-MM-YYYY</span></p>
+            </div>
+            
+            <!-- Earnings Table -->
+            <h3 style="margin: 0 0 15px; font-size: 18px; color: #1f2937;">Earnings</h3>
+            <table style="width: 100%; border-collapse: collapse; margin-bottom: 30px;">
+                <tbody>
+                    <tr>
+                        <td style="padding: 10px; border-bottom: 1px solid #e5e7eb; font-size: 14px;">Basic Salary</td>
+                        <td style="padding: 10px; border-bottom: 1px solid #e5e7eb; font-size: 14px; text-align: right;" th:text="'₹' + ${#numbers.formatDecimal(basicSalary, 1, 2)}">₹0.00</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border-bottom: 1px solid #e5e7eb; font-size: 14px;">HRA</td>
+                        <td style="padding: 10px; border-bottom: 1px solid #e5e7eb; font-size: 14px; text-align: right;" th:text="'₹' + ${#numbers.formatDecimal(hra, 1, 2)}">₹0.00</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border-bottom: 1px solid #e5e7eb; font-size: 14px;">Transport Allowance</td>
+                        <td style="padding: 10px; border-bottom: 1px solid #e5e7eb; font-size: 14px; text-align: right;" th:text="'₹' + ${#numbers.formatDecimal(transportAllowance, 1, 2)}">₹0.00</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border-bottom: 1px solid #e5e7eb; font-size: 14px;">Medical Allowance</td>
+                        <td style="padding: 10px; border-bottom: 1px solid #e5e7eb; font-size: 14px; text-align: right;" th:text="'₹' + ${#numbers.formatDecimal(medicalAllowance, 1, 2)}">₹0.00</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border-bottom: 1px solid #e5e7eb; font-size: 14px;">Other Allowance</td>
+                        <td style="padding: 10px; border-bottom: 1px solid #e5e7eb; font-size: 14px; text-align: right;" th:text="'₹' + ${#numbers.formatDecimal(otherAllowance, 1, 2)}">₹0.00</td>
+                    </tr>
+                    <tr style="background-color: #f9fafb;">
+                        <td style="padding: 12px 10px; font-size: 14px; font-weight: bold;">Gross Salary</td>
+                        <td style="padding: 12px 10px; font-size: 14px; font-weight: bold; text-align: right;" th:text="'₹' + ${#numbers.formatDecimal(grossSalary, 1, 2)}">₹0.00</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <!-- Deductions Table -->
+            <h3 style="margin: 0 0 15px; font-size: 18px; color: #1f2937;">Deductions</h3>
+            <table style="width: 100%; border-collapse: collapse; margin-bottom: 30px;">
+                <tbody>
+                    <tr>
+                        <td style="padding: 10px; border-bottom: 1px solid #e5e7eb; font-size: 14px;">PF Deduction</td>
+                        <td style="padding: 10px; border-bottom: 1px solid #e5e7eb; font-size: 14px; text-align: right;" th:text="'₹' + ${#numbers.formatDecimal(pfDeduction, 1, 2)}">₹0.00</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border-bottom: 1px solid #e5e7eb; font-size: 14px;">Tax Deduction</td>
+                        <td style="padding: 10px; border-bottom: 1px solid #e5e7eb; font-size: 14px; text-align: right;" th:text="'₹' + ${#numbers.formatDecimal(taxDeduction, 1, 2)}">₹0.00</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border-bottom: 1px solid #e5e7eb; font-size: 14px;">Other Deduction</td>
+                        <td style="padding: 10px; border-bottom: 1px solid #e5e7eb; font-size: 14px; text-align: right;" th:text="'₹' + ${#numbers.formatDecimal(otherDeduction, 1, 2)}">₹0.00</td>
+                    </tr>
+                    <tr style="background-color: #fef2f2;">
+                        <td style="padding: 12px 10px; font-size: 14px; font-weight: bold; color: #dc2626;">Total Deductions</td>
+                        <td style="padding: 12px 10px; font-size: 14px; font-weight: bold; text-align: right; color: #dc2626;" th:text="'₹' + ${#numbers.formatDecimal(totalDeductions, 1, 2)}">₹0.00</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <!-- Net Salary Highlight -->
+            <div style="background: linear-gradient(135deg, #10b981, #06b6d4); border-radius: 8px; padding: 20px; text-align: center; color: #ffffff; margin-bottom: 30px;">
+                <p style="margin: 0 0 5px; font-size: 16px; font-weight: 500;">Net Salary</p>
+                <h2 style="margin: 0; font-size: 32px; font-weight: bold;" th:text="'₹' + ${#numbers.formatDecimal(netSalary, 1, 2)}">₹0.00</h2>
+            </div>
+            
+            <p style="font-size: 14px; text-align: center; color: #4b5563; margin: 0;">
+                <em>Your payslip PDF is attached to this email.</em>
+            </p>
+        </div>
+        
+        <!-- Footer -->
+        <div style="background-color: #f9fafb; border-top: 1px solid #e5e7eb; padding: 20px; text-align: center; color: #6b7280; font-size: 12px;">
+            <p style="margin: 0 0 5px;">This is an auto-generated email from <strong th:text="${companyName}">PayrollPro</strong>.</p>
+            <p style="margin: 0 0 5px;">Please do not reply to this email.</p>
+            <p style="margin: 0;" th:text="${companyAddress}">123 Business Avenue, Tech City</p>
+        </div>
+        
+    </div>
+</body>
+</html>
